@@ -21,36 +21,88 @@
     <nav class="navbar">
         <a class="title">Weather Dashboard</a>
     </nav>
-
+    <!-- search bar -->
     <div class="searchBar">
         <div class="card border-dark" style="width: 100%;">
             <div class="card-header">Search for a City</div>
             <div class="card-body text-dark">
 
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter a City">
+                    <input type="text" class="form-control" id="cityInput" placeholder="Enter a City">
 
                     <div class="input-group-append search">
-                        <button class="btn btn-outline-secondary" type="button" id="search-button"> 🔍
-                            <i class="fas fa-search"></i>
-                        </button>
+                        <button class="btn btn-outline-secondary" type="button" id="search-button"> 🔍 </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- recent search -->
     <div class="card border-dark" id="recentCities" style="width: 25%;">
 
         <div class="card-header">Recently Searched</div>
-        <div class="line"><div>
-            <br/>
-<!-- maybe a list? -->
+        <div class="line"></div>
+        <br>
+        <!-- maybe a list or somethin? -->
+    </div>
 
+    <!-- current city weather card -->
+    <div class="currentWeather">
+        <div class="currentData">
+            <h2>City</h2>
+            <h6>Temp</h6>
+            <h6>Wind</h6>
+            <h6>Humidity</h6>
+        </div>
+        <div class="cute">
+            <!-- image src and alt tag -->
+            <h4>Current Forcast</h4>
+        </div>
+    </div>
+<div class="weatherData">
+    <h3>5 Day Forcast</h3>
+    <ul class="weatherCards">
+        <li class="dayCard">
+            <h4>City</h4>
+            <!-- image src and alt tag -->
+            <h6>Temp: °F</h6>
+            <h6>Wind: M/S</h6>
+            <h6>Humidity: %</h6> 
+        </li>
+        <li class="dayCard">
+            <h4>City</h4>
+            <!-- image src and alt tag -->
+            <h6>Temp: °F</h6>
+            <h6>Wind: M/S</h6>
+            <h6>Humidity: %</h6> 
+        </li>
+        <li class="dayCard">
+            <h4>City</h4>
+            <!-- image src and alt tag -->
+            <h6>Temp: °F</h6>
+            <h6>Wind: M/S</h6>
+            <h6>Humidity: %</h6> 
+        </li>
+        <li class="dayCard">
+            <h4>City</h4>
+            <!-- image src and alt tag -->
+            <h6>Temp: °F</h6>
+            <h6>Wind: M/S</h6>
+            <h6>Humidity: %</h6> 
+        </li>
+        <li class="dayCard">
+            <h4>City</h4>
+            <!-- image src and alt tag -->
+            <h6>Temp: °F</h6>
+            <h6>Wind: M/S</h6>
+            <h6>Humidity: %</h6> 
+        </li>
+    </ul>
+</div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 <script src="script.js"></script>
 
 </html>
