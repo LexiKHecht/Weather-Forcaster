@@ -37,9 +37,18 @@ body {
     justify-content: space-between;
     padding: 30px;
     margin: 10px;
+    width: 40%;
     border-radius: 5px;
     color: white;
     background-color: rgb(70, 109, 133);
+}
+
+.currentData {
+    text-align: justify;
+}
+
+.cute {
+    text-align: center;
 }
 
 .weatherData h3 {

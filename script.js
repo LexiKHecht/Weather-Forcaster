@@ -4,15 +4,30 @@ const searchBTN = document.getElementById("search-button")
 const cityInput = document.getElementById("cityInput")
 const currentWeather = document.querySelector(".currentWeather")
 const weatherCards = document.querySelector(".weatherCards")
-// data goes here
-const placeInfo = (forcastInput) => {
-    return `<li class="dayCard">
-                <h4>` + forcastInput.dt_txt.split(" ")[0] + `</h4>
+
+
+// data goes in here
+const placeInfo = (searchInfo, forcastInput, index) => {
+    if (index === 0) {
+        return `<div class="currentData">
+                    <h2>` + searchInfo + ` ` + forcastInput.dt_txt.split(" ")[0] + `</h2>
+                    <h6>Temp: ` + ((forcastInput.main.temp - 273.15) * 9 / 5 + 32).toFixed(2) + `°F</h6>
+                    <h6>Wind: ` + forcastInput.wind.speed + `m/s</h6>
+                    <h6>Humidity: ` + forcastInput.main.humidity + `%</h6> 
+                </div>
+                <div class="cute">
                 <img src="https://openweathermap.org/img/wn/` + forcastInput.weather[0].icon + `@2x.png" alt="weather icon">
-                <h6>Temp: ` + ((forcastInput.main.temp - 273.15) * 9/5 + 32).toFixed(2) + `°F</h6>
-                <h6>Wind: ` + forcastInput.wind.speed + `m/s</h6>
-                <h6>Humidity: ` + forcastInput.main.humidity + `%</h6> 
-            </li>`;
+                    <h6>` + forcastInput.weather[0].description + `</h6>
+                </div>`;
+    } else {
+        return `<li class="dayCard">
+                    <h4>` + forcastInput.dt_txt.split(" ")[0] + `</h4>
+                    <img src="https://openweathermap.org/img/wn/` + forcastInput.weather[0].icon + `@2x.png" alt="weather icon">
+                    <h6>Temp: ` + ((forcastInput.main.temp - 273.15) * 9 / 5 + 32).toFixed(2) + `°F</h6>
+                    <h6>Wind: ` + forcastInput.wind.speed + `m/s</h6>
+                    <h6>Humidity: ` + forcastInput.main.humidity + `%</h6> 
+                </li>`;
+    }
 }
 
 
@@ -26,6 +41,12 @@ function searchCity() {
     if (!searchInfo) return;
     console.log(searchInfo)
 
+    // saving and retreiving from local storage
+    localStorage.setItem("city", searchInfo);
+    var recentCity = (localStorage.getItem("city"));
+    console.log(recentCity);
+    
+
     // get city info
     fetch(queryURL)
         .then(response => response.json())
@@ -36,12 +57,17 @@ function searchCity() {
 
 
         });
+
 }
+
+
+
+
 // 5 day forcast
 function getForcast(searchInfo, lat, lon) {
     const forcastURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + key;
     var forcastDays = [];
-// get forcast data
+    // get forcast data
     fetch(forcastURL)
         .then(responce => responce.json())
         .then(data => {
@@ -56,14 +82,19 @@ function getForcast(searchInfo, lat, lon) {
 
             // clean slate
             cityInput.value = "";
-            // currentWeather = ""
+            currentWeather.innerHTML = "";
             weatherCards.innerHTML = "";
 
             // inputs the data from api
             console.log(fiveDay);
-            fiveDay.forEach(forcastInput => {
-                weatherCards.insertAdjacentHTML("beforeend", placeInfo(forcastInput));
-                
+            fiveDay.forEach((forcastInput, index) => {
+                if (index === 0) {
+                    currentWeather.insertAdjacentHTML("beforeend", placeInfo(searchInfo, forcastInput, index));
+                } else {
+                    weatherCards.insertAdjacentHTML("beforeend", placeInfo(searchInfo, forcastInput, index));
+                }
+
+
             })
 
         }
