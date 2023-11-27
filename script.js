@@ -1,6 +1,7 @@
 const key = "e4266d2a6b4c31917334c9fe29c0245b"
 
 const searchBTN = document.getElementById("search-button")
+const reloadBTN = document.querySelector("prev-city")
 const cityInput = document.getElementById("cityInput")
 const currentWeather = document.querySelector(".currentWeather")
 const weatherCards = document.querySelector(".weatherCards")
@@ -30,21 +31,47 @@ const placeInfo = (searchInfo, forcastInput, index) => {
     }
 }
 
+$(document).ready(function (){
+    localStorage.clear();
+    // getting prev search history from local storage upon page loading
+    var localCities = JSON.parse(localStorage.getItem("city")) || []
+    var cities = [];
+
+    function cityAllStorage (){
+
+        for (i=0; i<localCities.length; i++){
+
+            $(".list").prepend("<button type='button' class='btn btn-light prev-city'>"+ cities[i]+ "</button>");
+        }
+        
+    }
+    console.log(localStorage.getItem("city"));
+    cityAllStorage();
+});
+
 
 searchBTN.addEventListener('click', searchCity)
+// reloadBTN.addEventListener('click', searchCity)
 
 function searchCity() {
+
     // user city
+    var localCities = JSON.parse(localStorage.getItem("city")) || []
+    var cities = [];
     var searchInfo = cityInput.value.trim();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchInfo + "&appid=" + key;
     // maybe clear input feild???
     if (!searchInfo) return;
     console.log(searchInfo)
 
+    localCities = searchInfo.split(",");
+    console.log(cities)
+    cities.push(localCities)
+
     // saving and retreiving from local storage
-    localStorage.setItem("city", searchInfo);
-    var recentCity = (localStorage.getItem("city"));
-    console.log(recentCity);
+    localStorage.setItem("city", JSON.stringify(searchInfo));
+    $(".list").append("<button class='btn btn-light prev-city'>"+ cities + "</button>")
+
     
 
     // get city info
@@ -100,4 +127,4 @@ function getForcast(searchInfo, lat, lon) {
         }
         )
 }
-// recentCities()
+

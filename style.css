@@ -29,6 +29,13 @@ body {
 
 #recentCities {
     display: inline-flex;
+    padding-left: 0px;
+}
+
+.list {
+    display: grid;
+    float: left;
+    padding: 0px;
 }
 
 .currentWeather {
