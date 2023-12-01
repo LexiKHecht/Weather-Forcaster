@@ -14,7 +14,7 @@ body {
     margin-top: 0vh;
     margin-bottom: 0vh;
     height: 50px;
-    background-image: linear-gradient(rgb(70, 109, 133), rgb(16, 16, 103));
+    background-image: linear-gradient(rgb(70, 109, 133) 50%, rgb(30, 30, 127));
     color: white;
 }
 
@@ -32,10 +32,18 @@ body {
     padding-left: 0px;
 }
 
-.list {
+#list {
     display: grid;
-    float: left;
-    padding: 0px;
+    padding-left: 0px;
+}
+
+.btn-light {
+    color: black;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-radius: 0px;
+    border-width: .5px;
 }
 
 .currentWeather {
