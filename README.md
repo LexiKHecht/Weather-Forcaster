@@ -31,7 +31,7 @@ I utilized:
 - [Boostrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
 ## 💨Review
-- [Website](https://lexikhecht.github.io/codeQuiz/)
-- [Repository](https://github.com/LexiKHecht/codeQuiz)
+- [Website](https://lexikhecht.github.io/Weather-Forcaster/)
+- [Repository](https://github.com/LexiKHecht/Weather-Forcaster)
 
 https://github.com/LexiKHecht/Weather-Forcaster/assets/145725343/ae33359d-39d2-4128-bc54-348e8122b97e
