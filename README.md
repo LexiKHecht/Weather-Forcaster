@@ -1,5 +1,5 @@
 # 🌦️Weather-Forcaster
-This site features a weather dashboard that allows users to retrieve information on a cities current a future forcaste. Elements to this dashboard include a cities temperature, wind speed, humidity, weather condition, and the corresponding date. The site also saves recent searches, allowing the user to quickly switch back to past city they viewed.
+This site features a weather dashboard that allows users to retrieve information on a cities current a future forcaste. Elements to this dashboard include a cities temperature, wind speed, humidity, weather condition, and the corresponding date. The site also saves recent searches, allowing the user to quickly switch back to past cities they viewed.
 
 ## ☀️Table of Contents
 
